@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bal</title>
+	
+<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="bal1" class="1"/>
+	<div id="bal2" class="2"/>
+	<div id="bal3" class="3"/>
+</body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+		$(document).ready(function() {
+			$( "#bal3" ).on("click",function() {
+				$( "#bal1" ).addClass( "a1" );
+				$( "#bal2" ).addClass( "a2" );
+				$( "#bal3" ).addClass( "a3" );
+			});
+		});
+	</script>
+</html>

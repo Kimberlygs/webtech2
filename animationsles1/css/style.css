@@ -1,0 +1,60 @@
+body {
+
+background-color:#74A4E8;
+
+}
+#bal1 {
+
+width:50px;
+height:50px;
+border-radius:50px;
+background-color:red;
+transition: -webkit-transform 1s;
+
+}
+#bal2 {
+
+width:50px;
+height:50px;
+border-radius:50px;
+background-color:blue;
+transition: -webkit-transform 1s;
+
+}
+#bal3 {
+
+width:50px;
+height:50px;
+border-radius:50px;
+background-color:white;
+transition: -webkit-transform 1s;
+
+}
+.a1 {
+
+-webkit-transform-origin: left top;
+-webkit-animation: move 1s;
+-webkit-animation-fill-mode: forwards;
+-webkit-transform:translateX(100px);
+
+
+}
+.a2 {
+
+-webkit-transform-origin: left top;
+-webkit-animation: move 1s;
+-webkit-animation-fill-mode: forwards;
+-webkit-transform:translateY(100px);
+
+}
+.a3 {
+
+-webkit-transform-origin: left top;
+-webkit-animation: move 1s;
+-webkit-animation-fill-mode: forwards;
+-webkit-transform:translateX(100px);
+-webkit-transform:translateY(100px);
+
+}
+
+
