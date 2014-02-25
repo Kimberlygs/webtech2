@@ -14,8 +14,6 @@ margin-right:auto;
 overflow:hidden;
 
 
-
-
 }
 #bovenblok  img{
 
@@ -54,7 +52,7 @@ margin-left:30px;
 -webkit-animation-fill-mode: forwards;
 
 }
-	@-webkit-keyframes draaien{
+	@-webkit-keyframes draaien {
 	0% { -webkit-transform: perspective(400px) rotatex( 90deg ); opacity: 0; }
 	40% { -webkit-transform: perspective(400px) rotatex( -10deg ); }
 	70% { -webkit-transform: perspective(400px) rotatex( 10deg ); }
@@ -69,6 +67,37 @@ margin-left:30px;
 }
 
 @-webkit-keyframes middenanimatie{
-	0% { -webkit-transform: translateX(-1000px); opacity: 0; }
+	1% { -webkit-transform: translateX(-1000px); opacity: 0; }
 	100% { -webkit-transform: translateX(0); opacity: 1; }
 }
+
+#fotos {
+
+-webkit-transform-origin: left bottom;
+-webkit-animation: fotodraai 1s;
+-webkit-animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes fotodraai{
+0% { -webkit-transform: perspective(400px) rotateY( 90deg ); opacity: 0; }
+40% { -webkit-transform: perspective(400px) rotateY( -10deg ); }
+70% { -webkit-transform: perspective(400px) rotateY( 10deg ); }
+100% { -webkit-transform: perspective(400px) rotateY( 0deg ); opacity: 1; }
+}
+
+.vergroot {
+
+width:100px;
+height:100px;
+}
+
+.groot {
+
+height:110px;
+width:110px;
+
+}
+
+
+

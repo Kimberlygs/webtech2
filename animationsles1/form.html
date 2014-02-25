@@ -19,10 +19,28 @@
 	
 	<div id="fotos">
 	
-	<img src="images/Lucy.jpg" alt="Lucy"/>
-	<img src="images/Sarah.png" alt="Sarah"/>
-	<img src="images/Sarah_alt.png" alt="Sarah"/>
+	<img src="images/Lucy.jpg" alt="Lucy" class="vergroot" id="lucy"/>
+	<img src="images/Sarah.png" alt="Sarah" class="vergroot" id="sarah"/>
+	<img src="images/Sarah_alt.png" alt="Sarah" class="vergroot" id="sarah2"/>
 	
 	</div>
 </body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+		$(document).ready(function() {
+			$( "#lucy" ).on("click",function() {
+				$( "#lucy" ).addClass( "groot" );
+				
+			});
+			$( "#sarah" ).on("click",function() {
+				$( "#sarah" ).addClass( "groot" );
+				
+			});
+			$( "#sarah2" ).on("click",function() {
+				$( "#sarah2" ).addClass( "groot" );
+				
+			});
+		});
+	</script>
 </html>
