@@ -11,8 +11,7 @@
     <div id="wrapper">
 	
         <p id="warning"></p>
-        <p id="weather">
-		&#176 </p>
+        <p id="weather"></p>
         <p id="summary"></p>
         <div id="tomorrow"></div>
 	
@@ -41,7 +40,7 @@
 			var graden = (tussen - 32) * (5/9);
 			
 		
-              $('#weather').text(Math.round(graden));
+              $('#weather').text(Math.round(graden) + "&#176");
               $('#summary').text(data.currently.summary);
             });
         }
