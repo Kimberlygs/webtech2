@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>javascript advanced</title>
+</head>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<body>
+	<div class="container">
+		<h1>IMDo App</h1>
+
+		<ul>
+			<li id="todo-item1">Learn about GIT</li>
+			<li id="todo-item2" class="todo">Experiment with CSS animations</li>
+			<li id="todo-item3" class="todo">Become a Javascript ninja</li>
+		</ul>
+
+	</div><!-- end container -->
+<script>
+		// FRAMEWORK
+		
+		var IMDelement = function(element)
+		{
+			this.element = element;
+			this.isArray = (element.length > 1) ? true : false; // verkorte if else
+		}
+		
+		IMDelement.prototype.color = function (p_color)
+		{
+			if(this.isArray)
+			{
+				for(var i = 0, l=this.element.length; i<l; i++)
+				{
+					this.element[i].style['color'] = p_color;
+				}
+			}else{
+				this.element.style['color'] = p_color;
+			}
+			
+			return this.element;
+		}
+		
+		IMDelement.prototype.addClass = function(p_addclass)
+		{
+			if(this.isArray)
+			{
+				for(var i = 0, l=this.element.length; i<l; i++)
+				{
+					this.element[i].classList.add(p_addclass);
+				}
+			}else{
+				this.element.classList.add(p_addclass);
+			}
+			
+			return this.element;
+		}
+		
+		
+		var $ = function(p_element)
+		{
+			var firstCharacter = p_element.charAt(0);
+			var result;
+			
+			switch(firstCharacter)
+			{
+				case "#":
+					var idToSelect = p_element.substring(1, p_element.length);
+					var element = document.getElementById(idToSelect);
+					var result = new IMDelement(element);
+					
+				break;
+				case ".":
+				
+					var classToSelect = p_element.substring(1, p_element.length);
+					var elements = document.getElementsByClassName(classToSelect);
+					var result = new IMDelement(elements);
+				break;
+				default:
+					var selectAll = p_element;
+					var elements = document.getElementsByTagName(selectAll);
+					var result = new IMDelement(elements);
+				break;
+				
+			}
+			
+				return result;
+		}
+		
+		//eigen code
+		
+		//$("li").color("red");
+		$("li").addClass("test");
+		
+		
+		
+		// 
+		
+	</script>
+
+</body>
+</html>
+</body>
+</html>

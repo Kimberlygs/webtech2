@@ -1,0 +1,37 @@
+ body{
+            font-family:Arial, sans-serif;
+			
+			
+}
+ #wrapper
+    {
+	 width:400px;
+	 /*background-image:url("../images/cloud.jpg");*/
+	 background-repeat:none;
+	 height:533px;
+	 margin-top:-10px;
+	 
+	
+ }
+ img
+ {
+ margin:0;
+position:absolute; 
+z-index:0; }
+
+ #weather
+{
+            font-size:100px;
+            color:red;
+            margin:0;
+            text-align: center;
+			z-index:1;
+}
+#summary
+{
+            font-size:20px;
+            color:purple;
+            text-align:center;
+			z-index:1;
+}
+		

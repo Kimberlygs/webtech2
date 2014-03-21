@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BUILDING APPS</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+
+   
+</head>
+    <body>
+    <div id="wrapper">
+	
+        <p id="warning"></p>
+        <p id="weather">
+		&#176 </p>
+        <p id="summary"></p>
+        <div id="tomorrow"></div>
+	
+    </div>
+
+        <script>
+        
+        navigator.geolocation.getCurrentPosition(success, error);
+		
+
+        function success(position)
+        {
+
+            var apiKey = 'a9c3db137a6029fb8ab4e0f70377c116';
+            var url = 'https://api.forecast.io/forecast/';
+            var lati = position.coords.latitude;
+            var longi = position.coords.longitude;
+            var data;
+
+            $.getJSON(url + apiKey + "/" + lati + "," + longi + "?callback=?", function(data) {
+
+                    console.log(data);
+
+			var farenheit = data.currently.temperature;
+			var tussen = parseFloat(farenheit);
+			var graden = (tussen - 32) * (5/9);
+			
+		
+              $('#weather').text(Math.round(graden));
+              $('#summary').text(data.currently.summary);
+            });
+        }
+
+        function error(err) 
+        {
+          console.warn('ERROR(' + err.code + '): ' + err.message);
+          $("#warning").text("Het was ongemogelijk uw geolocatie te bepalen");
+        };
+
+
+        </script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    </body>
+</html>
