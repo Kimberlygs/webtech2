@@ -2,55 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Form</title>
-	
-<link href="css/form.css" rel="stylesheet" type="text/css">
+	<title>Css3 animations 1</title>
+	<link rel="stylesheet" href="css/form.css" media="all" />
+
 </head>
 <body>
-	
-	
-	<div id="bovenblok" class="draai">
-	<div id="midden">
-	<img src="images/Lucy.jpg" alt="logo"/>
-	<h1>Welcome to the IMD workshop</h1>
-	<p>Please select a user below</p>
+	<div id='banner' class="flip">
+		<div id="slide">
+			<img src="images/logo.png" alt="Logo IMD">
+			<h1>Welcome to the IMD workshop</h1>
+			<h2>Select a user</h2>
+		</div>
 	</div>
-	</div>
-	
-	<div id="fotos">
-	
-	<img src="images/Lucy.jpg" alt="Lucy" class="vergroot" id="lucy"/>
-	<img src="images/Sarah.png" alt="Sarah" class="vergroot" id="sarah"/>
-	<img src="images/Sarah_alt.png" alt="Sarah" class="vergroot" id="sarah2"/>
-	
-	</div>
-  <div id=""></div>
-  
-  	<div id="fotos">
-	
-	<img src="images/Lucy.jpg" alt="Lucy" class="vergroot" id="lucy"/>
-	<img src="images/Sarah.png" alt="Sarah" class="vergroot" id="sarah"/>
-	<img src="images/Sarah_alt.png" alt="Sarah" class="vergroot" id="sarah2"/>
-	
-	</div>
-  
-</body>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<div id="pictures" class="flip">
+		<img src="images/Lucy.jpg" alt="Lucy" class="imgmove" value="Lucy">
+		
+		<img src="images/Sarah.png" alt="Sarah" class="imgmove">
+		<img src="images/Sarah_alt.png" alt="Sarah the second" class="imgmove">
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+
+</body>
 <script>
-		$(document).ready(function() {
-			$( "#lucy" ).on("click",function() {
-				$( "#lucy" ).addClass( "groot" );
-				
-			});
-			$( "#sarah" ).on("click",function() {
-				$( "#sarah" ).addClass( "groot" );
-				
-			});
-			$( "#sarah2" ).on("click",function() {
-				$( "#sarah2" ).addClass( "groot" );
-				
-			});
-		});
-	</script>
+
+	$( document ).ready(function() {
+  
+	$( ".imgmove" ).click(function() {
+		$( ".imgmove" ).addClass('imgSelected');
+	
+	});
+
+  });
+	
+	
+	
+	
+
+</script>
 </html>
