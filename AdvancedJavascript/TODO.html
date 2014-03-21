@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>IMD TODO application</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+
+
+	<section id="wrapper">
+		<h1>IMD TODO application</h1>
+
+		<ul>
+			<li class="prior-normal">Doing Javascript like a pro</li>
+			<li class="prior-high">Create your own CMS</li>
+			<li id="mustdo" class="prior-high">Project PHP</li>
+			<li class="prior-high">Learning GIT</li>
+			<li class="prior-normal">Become a Javascript ninja</li>
+			<li class="prior-low"></li>Javascript like a pro</li>
+			<li class="prior-low">Create your own CMS</li>
+			
+		</ul>
+	</section>
+
+
+
+	<script>
+	// Dit is het eigen gemaakte FRAMEWORK
+
+	var IMDelement = function(element)
+	{
+		this.element = element;
+		this.isArray = (element.length > 1) ? true : false;   
+		// dit is een verkorte if else functie geschreven op 1 lijn
+
+	}
+
+	IMDelement.prototype.addClass = function(p_class)
+	{
+		if(this.isArray)
+		{
+			for(var i=0, l=this.element.length; i<l; i++)
+			{
+				this.element[i].classList.add(p_class);
+
+			}
+		} 
+		else
+		{
+			this.element.classList.add(p_class);
+		}
+
+		return this.element;
+	}
+
+	var $ = function(p_element)
+	{
+		var firstCharacter = p_element.charAt(0);
+		var result;
+		switch(firstCharacter)
+		{
+			case "#":
+				var idToSelect = p_element.substring(1, p_element.length);
+				var element = document.getElementById(idToSelect);
+				var result = new IMDelement(element);
+			break;
+
+			case ".":
+				var classToSelect = p_element.substring(1, p_element.length);
+				var elements = document.getElementsByClassName(classToSelect);
+				var result = new IMDelement(elements);
+			break;
+
+			default:
+			var selectAll = p_element;
+			var tags = document.getElementsByTagName(selectAll);
+			var result = new IMDelement(tags);
+			break;
+
+		}
+
+		return result;
+	}
+
+	//$('#item1').color('yellow');
+	//$('.todo').color('red'); ==> voegt kleur toe
+	$('#mustdo').addClass("done");
+	$('li').addClass("done");
+	$('.prior-low').addClass("done");
+
+	</script>
+</body>
+</html>
