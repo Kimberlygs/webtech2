@@ -1,5 +1,7 @@
 ## Welkom bij mijn repositorie waar al de oefeningen terug te vinden zijn over van het vak Webtechnologie 2 ##
 
+#U kan mijn GITHUB page bekijken op deze link [Bekijk hier](http://kimberlygs.github.io/webtech2/)
+
 1. De eerste oefening van het semester was het maken van een todo list. Hiervoor moesten we een klein framework maken met als voorbeeld Jquerie.
 **De oefening vind u** [hier](https://github.com/Kimberlygs/webtech2/tree/master/AdvancedJavascript.git)
 
