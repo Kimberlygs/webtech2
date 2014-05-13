@@ -18,7 +18,13 @@ block content
   #content
     #leftSide
        each m in messages
-          .messagesid #{m.name},#{m.password}
-
+        div#message
+         h1.messageid #{m.name} Asks :
+         p.messageid #{m.message}
+         p.voteup.glyphicon.glyphicon-chevron-up voteUp
+         p#upvotes
+         p.votedown.glyphicon.glyphicon-chevron-down voteDown
+         p#downvotes
+         p.delete.glyphicon.glyphicon-remove delete
 
     

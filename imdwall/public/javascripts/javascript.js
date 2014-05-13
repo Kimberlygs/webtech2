@@ -1,34 +1,36 @@
 
 $(document).ready(function()
-{ 
+{ 		
 
-	//var mysql = require('mysql')
-	
+
 
 	var client = new Faye.Client('https://damp-springs-7512.herokuapp.com/faye'); 
 		client.subscribe('/subscribe', function(message) { 
 		
-			var toBerichten = "<div id='message' class='Questioncss vote'><h1>" 
+			var toBerichten = "<div id='message' class='vote'><h1>" 
 							  + message.name + " asks:</h1><p class='message'>"
 	                          + message.question  + "</p></div>";
 
-	        var toModerator = "<div id='message' class='Questioncss'><h1>" 
-							  + message.name + " asks:</h1><p class='message'>"
-	                          + message.question  + "</p><a href='#' class='delete'>Delete</a></div>";
-	      
+	        
 			 $("#leftSide").append(toBerichten);
-			 $("#leftSideQuestion").append(toModerator);
 			
 		});
 
-		$(".vote").on("click",function()
+		//delete an item without database
+		$('.delete').on("click",function(){
+
+			var currentDelete = $(this).find(".delete");
+			$(this).parent().slideUp();
+			$(this).parent().remove();
+			
+			//alert("er is geklikt" + currentDelete);
+			
+		});
+		// end delete
+
+		$(".voteup").on("click",function()
 		{
 			    var current = $(this);
-			    var currentId = 0;
-			    currentId +=1;
-			    currentId++;
-			    console.log(currentId);
-			    console.log(current);
 				var fontsize = $(this).find(".message").css("fontSize");
 				fontsize  = parseInt(fontsize) + 2 + "px";
 				current.find(".message").css("fontSize", fontsize );
@@ -39,7 +41,9 @@ $(document).ready(function()
 		$('#leftSide').on('click','.messagesid',function(){
 
 			
-			var id = $(this).innerText;
+			var id = $(this).text;
+			$("p.messagesid").addClass('.Questioncss');
+
 
 			var submit = $.ajax({
 				type: "POST",
@@ -50,21 +54,22 @@ $(document).ready(function()
     			},
 
 				success: function(response){
-					if(JSON.stringify(response) == true){
+					
 						alert("it worked");
+						/*var currentDelete = $(this).find(".messagesid");
+						$(this).parent().slideUp();
+						$(this).parent().remove();*/
+			
+				//alert("er is geklikt" + currentDelete)
+					
 				}
-			}
 
 		});
 
 			
 		});
 
-			/*var currentDelete = $(this).find(".delete");
-			$(this).parent().slideUp();
-			$(this).parent().remove();
 			
-			//alert("er is geklikt" + currentDelete)*/
 
 
 	$("#submitQuestion").on("click",function(event){ 
@@ -76,15 +81,16 @@ $(document).ready(function()
 		var submit = $.ajax({
 				data: {name:name,question:question},
 				type: "POST",
-				url: "/insertDate",
+				url: "/insertData",
 				dataType: "json",
 				error: function(response){
         			alert("it did not work");
+        			
+
     			},
 				success: function(response){
-					if(JSON.stringify(response) == true){
-						client.publish('/subscribe', {question : question, name : name});
-					}
+					
+				client.publish('/subscribe', {question : question, name : name});
 				}
 
 

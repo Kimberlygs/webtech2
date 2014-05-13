@@ -16,9 +16,15 @@ block content
  #content
   div.row
    div#leftSide.col-md-7
-    p Hier komen de berichten te staan
-    p Hopelijk met de naam en het bericht eronder
-    p hopelijk nog met een foto'tje van de verzender van de vraag
+     each m in messages
+      div#message
+       h1.messageid #{m.name} Asks :
+       p.messageid #{m.message}
+       p.voteup.glyphicon.glyphicon-chevron-up voteUp
+       p#upvotes
+       p.votedown.glyphicon.glyphicon-chevron-down voteDown
+       p#downvotes
+       p.delete.glyphicon.glyphicon-remove delete
    div#rightSide.col-md-4
     p.questionHeader
       h1 Ask your question
