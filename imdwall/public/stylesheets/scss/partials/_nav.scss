@@ -1,0 +1,23 @@
+$color-primary: #e74c3c; 
+
+body{
+    background-color: #788;
+    color: $color-primary;
+    
+}
+
+
+h1 
+{ 
+ color: $color-primary; 
+} 
+
+a 
+{ 
+ color: lighten($color-primary, 50%); 
+} 
+
+nav 
+{
+    background-color: #34495e;
+}

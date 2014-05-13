@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  //h1= title
+  //p Welcome to #{title}
+  a(href="/auth/facebook") Login via Facebook
+  
+  ul.nav.nav-pills
+   li
+    a(href="/") Home
+   li
+    a(href="ask") Ask a question
+   li
+    a(href="questions") All Questions
+   li
+    a(href="login") login
+  div#login
+   form#loginForm(action="#" method="post")
+    label(for="nameField") Email 
+    input#email(type="text")
+    label(for="password") password 
+    input#password(type="password") 
+    input#verzend(type="submit" value="Login")

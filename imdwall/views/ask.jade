@@ -1,0 +1,30 @@
+extends layout
+
+block content
+ div#container
+  ul.navbar.navbar-inverse
+   li
+    img#littleImg(src="../images/logoklein.png")
+   li
+    a(href="ask") ASK A QUESTION
+   li
+    a(href="questions") ALL QUESTIONS
+   li
+    a(href="/") LOGIN
+ 
+ div#logo.img-rounded.img-responsiv
+ #content
+  div.row
+   div#leftSide.col-md-7
+    p Hier komen de berichten te staan
+    p Hopelijk met de naam en het bericht eronder
+    p hopelijk nog met een foto'tje van de verzender van de vraag
+   div#rightSide.col-md-4
+    p.questionHeader
+      h1 Ask your question
+      ul#form(class="form-horizontal")
+       li: label.col-sm-5.control-label Your name
+       li: input#nameField.form-control(type="text")
+       li: label.col-sm-5.control-label your question
+       li: textarea(name='questionField', id='questionField', maxlength="100", rows="3" )
+       li: input#submitQuestion.btn.btn-danger(type="submit", value="Speak up")

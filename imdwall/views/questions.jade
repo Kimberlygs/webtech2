@@ -1,0 +1,24 @@
+extends layout
+
+block content
+ div#container
+  ul.navbar.navbar-inverse
+   li
+    img#littleImg(src="../images/logoklein.png")
+   li
+    a(href="ask") ASK A QUESTION
+   li
+    a(href="questions") ALL QUESTIONS
+   li
+    a(href="/") LOGIN
+
+  h1 All questions
+  h2 By clicking on a question, you can vote on it
+
+  #content
+    #leftSide
+       each m in messages
+          .messagesid #{m.name},#{m.password}
+
+
+    
