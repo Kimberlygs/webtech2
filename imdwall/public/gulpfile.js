@@ -6,7 +6,7 @@
  	watch = require('gulp-watch');
 
  gulp.task('minify-css', function(){
- 	gulp.src('public/stylesheets/*.css')
+ 	gulp.src('public/stylesheets/css/*.css')
  		.pipe(concatCSS('build.css'))
  		.pipe(minifyCSS(opts))
  		.pipe(gulp.dest('build/css/'))

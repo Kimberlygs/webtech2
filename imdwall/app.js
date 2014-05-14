@@ -54,20 +54,30 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/', function(req, res){
-  res.redirect('login');
+
 });
 
 
-app.get('/logout', function(req, res){
-  // destroy the user's session to log them out
-  // will be re-created next request
-  req.session.destroy(function(){
-    res.redirect('/');
-  });
-});
 
 app.get('/login', function(req, res){
-  res.render('login');
+  var username = req.body.username;
+  var password = req.body.password;
+  connection.query("use webtech");
+  var strQuery = "SELECT * FROM loginuser WHERE user_name = '" + username + "' AND user_password = '" + password + "'";
+    console.log(strQuery); 
+  connection.query(strQuery, function(err, rows){
+    if(err) {
+      throw err;
+    }else{
+      console.log( rows );
+      if(strQuery){
+          res.redirect('ask.jade');
+      }else{
+          res.redirect('questions.jade');
+      }
+    }
+  });
+
 });
 
 // begin get all question
@@ -116,8 +126,6 @@ app.get('/ask', function(req, res){
     
 });// einde get all questions on ask page
 
-
-app.get('/login',login.index);
 app.get('/moderate',moderate.index);
 
 
@@ -171,31 +179,7 @@ app.post('/deleteDate/:id',function(req,res){
 
 });// einde delete
 
-// inloggen
-app.post('/login', function(req, res){
-  authenticate(req.body.username, req.body.password, function(err, user){
-    if (user) {
-      // Regenerate session when signing in
-      // to prevent fixation
-      req.session.regenerate(function(){
-        // Store the user's primary key
-        // in the session store to be retrieved,
-        // or in this case the entire user object
-        req.session.user = user;
-        req.session.success = 'Authenticated as ' + user.name
-          + ' click to <a href="/logout">logout</a>. '
-          + ' You may now access <a href="/restricted">/restricted</a>.';
-        res.redirect('back');
-      });
-    } else {
-      req.session.error = 'Authentication failed, please check your '
-        + ' username and password.'
-        + ' (use "tj" and "foobar")';
-      res.redirect('login');
-    }
-  });
-});
-// einde van inloggen
+
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 

@@ -2,22 +2,25 @@
 $(document).ready(function()
 { 		
 
-
-
+	var currentVoteUp = 0;
+	
 	var client = new Faye.Client('https://damp-springs-7512.herokuapp.com/faye'); 
 		client.subscribe('/subscribe', function(message) { 
 		
-			var toBerichten = "<div id='message' class='vote'><h1>" 
+			var toBerichten = "<div id='message' class='slideInDown'><h1>" 
 							  + message.name + " asks:</h1><p class='message'>"
-	                          + message.question  + "</p></div>";
-
+	                          + message.question  + "</p><p class='voteup glyphicon glyphicon-chevron-up'>Vote up</p><p class='upvotes'></p>"
+	                          + "<p class='votedown glyphicon glyphicon-chevron-down'>voteDown</p>"
+	                          +"<p id='downvotes'></p><p class='delete glyphicon glyphicon-remove'>delete</p></div>";
+				
+						
 	        
 			 $("#leftSide").append(toBerichten);
 			
 		});
 
 		//delete an item without database
-		$('.delete').on("click",function(){
+		/*$('.delete').on("click",function(){
 
 			var currentDelete = $(this).find(".delete");
 			$(this).parent().slideUp();
@@ -25,26 +28,39 @@ $(document).ready(function()
 			
 			//alert("er is geklikt" + currentDelete);
 			
-		});
+		});*/
 		// end delete
 
 		$(".voteup").on("click",function()
 		{
-			    var current = $(this);
-				var fontsize = $(this).find(".message").css("fontSize");
-				fontsize  = parseInt(fontsize) + 2 + "px";
-				current.find(".message").css("fontSize", fontsize );
-			
+			    var current = $(this).find('.voteup');
+				var currentmessageVote = $(this).next("#votes");
+			    currentVoteUp++;
+			    
+
+			    currentmessageVote.html(currentVoteUp);
+
 
 		}); 
 
-		$('#leftSide').on('click','.messagesid',function(){
+		$(".votedown").on("click",function()
+		{
+			    
+			    var current = $(this).find('.votedown');
+				var currentmessageVote = $(this).next("#votes");
+				currentVoteUp--;
+			    currentmessageVote.html(currentVoteUp);
+
+		}); 
+
+
+		$('#leftSide').on('click','.delete',function(){
 
 			
-			var id = $(this).text;
+			var id = $(this).attr('data-delete');
 			$("p.messagesid").addClass('.Questioncss');
-
-
+			
+			
 			var submit = $.ajax({
 				type: "POST",
 				url: "/deleteDate/" + id,
@@ -55,16 +71,12 @@ $(document).ready(function()
 
 				success: function(response){
 					
+						var deletemessage = $(this).parent('#messages');
 						alert("it worked");
-						/*var currentDelete = $(this).find(".messagesid");
-						$(this).parent().slideUp();
-						$(this).parent().remove();*/
-			
-				//alert("er is geklikt" + currentDelete)
-					
-				}
-
-		});
+						deletemessage.parent().slideUp();
+						deletemessage.parent().remove();	
+				} 
+			}); 
 
 			
 		});

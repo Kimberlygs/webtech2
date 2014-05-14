@@ -1,7 +1,6 @@
 /*
  * GET home page.
  */
-
 exports.index = function(req, res){
 
 	connection.query("use webtech");

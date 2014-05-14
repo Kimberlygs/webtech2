@@ -2,15 +2,15 @@ extends layout
 
 block content
  div#container
-  ul.navbar.navbar-inverse
-   li
-    img#littleImg(src="../images/logoklein.png")
-   li
-    a(href="ask") ASK A QUESTION
-   li
-    a(href="questions") ALL QUESTIONS
-   li
-    a(href="/") LOGIN
+   ul.navbar.navbar-inverse
+    li
+     img#littleImg(src="../images/logoklein.png")
+    li
+     a(href="/") Home
+    li
+     a(href="ask") ASK A QUESTION
+    li
+     a(href="questions") ALL QUESTIONS
  
  div#logo.img-rounded.img-responsiv
  #content
@@ -21,10 +21,9 @@ block content
        h1.messageid #{m.name} Asks :
        p.messageid #{m.message}
        p.voteup.glyphicon.glyphicon-chevron-up voteUp
-       p#upvotes
+       p#votes
        p.votedown.glyphicon.glyphicon-chevron-down voteDown
-       p#downvotes
-       p.delete.glyphicon.glyphicon-remove delete
+       p.delete.glyphicon.glyphicon-remove(data-delete= "#{m.id}") delete
    div#rightSide.col-md-4
     p.questionHeader
       h1 Ask your question

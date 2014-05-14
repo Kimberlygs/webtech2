@@ -5,21 +5,31 @@ block content
   //p Welcome to #{title}
   //a(href="/auth/facebook") Login via Facebook
   
-  ul.nav.nav-pills
-   li
-    a(href="/") Home
-   li
-    a(href="ask") Ask a question
-   li
-    a(href="questions") All Questions
-   li
-    a(href="login") login
+  div#container
+   ul.navbar.navbar-inverse
+    li
+     img#littleImg(src="../images/logoklein.png")
+    li
+     a(href="/") Home
+    li
+     a(href="ask") ASK A QUESTION
+    li
+     a(href="questions") ALL QUESTIONS
+    
 
-  form(method="post",action="/login")
-    label Username:
-    input(type="text", name="username")
-    label Password:
-    input(type="text",name="password")
-    input(type="submit", value="Login")
+  
+   form#loginForm(method="post",action="/login", role="form")
+    h1 Login
+    div.form-group
+     label.col-sm-3 Username:
+     div.col-sm-10
+      input(type="text", name="username", id="username")
+    div.form-group
+     label.col-sm-3 Password:
+     div.col-sm-10
+      input(type="text",name="password" id="password")
+    div.form-group
+     div.col-sm-10
+      input#logininput.btn.btn-danger(type="submit", value="Login")
 
 

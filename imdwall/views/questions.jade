@@ -2,29 +2,28 @@ extends layout
 
 block content
  div#container
-  ul.navbar.navbar-inverse
-   li
-    img#littleImg(src="../images/logoklein.png")
-   li
-    a(href="ask") ASK A QUESTION
-   li
-    a(href="questions") ALL QUESTIONS
-   li
-    a(href="/") LOGIN
+   ul.navbar.navbar-inverse
+    li
+     img#littleImg(src="../images/logoklein.png")
+    li
+     a(href="/") Home
+    li
+     a(href="ask") ASK A QUESTION
+    li
+     a(href="questions") ALL QUESTIONS
 
   h1 All questions
-  h2 By clicking on a question, you can vote on it
+  
 
   #content
     #leftSide
-       each m in messages
-        div#message
-         h1.messageid #{m.name} Asks :
-         p.messageid #{m.message}
-         p.voteup.glyphicon.glyphicon-chevron-up voteUp
-         p#upvotes
-         p.votedown.glyphicon.glyphicon-chevron-down voteDown
-         p#downvotes
-         p.delete.glyphicon.glyphicon-remove delete
+      each m in messages
+       div#message.slideInDown
+        h1.messageid #{m.name} Asks :
+        p.messageid #{m.message}
+        p.voteup.glyphicon.glyphicon-chevron-up voteUp
+        p#votes
+        p.votedown.glyphicon.glyphicon-chevron-down voteDown
+        p.delete.glyphicon.glyphicon-remove(data-delete= "#{m.id}") delete
 
     
