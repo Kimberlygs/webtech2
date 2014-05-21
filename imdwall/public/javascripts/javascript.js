@@ -8,7 +8,7 @@ $(document).ready(function()
 		client.subscribe('/subscribe', function(message) { 
 		
 			var toBerichten = "<div id='message' class='slideInDown'><h1>" 
-							  + message.name + " asks:</h1><p class='message'>"
+							  + message.name + " asks:</h1><p class='message slideInDown'>"
 	                          + message.question  + "</p><p class='voteup glyphicon glyphicon-chevron-up'>Vote up</p><p class='upvotes'></p>"
 	                          + "<p class='votedown glyphicon glyphicon-chevron-down'>voteDown</p>"
 	                          +"<p id='downvotes'></p><p class='delete glyphicon glyphicon-remove'>delete</p></div>";

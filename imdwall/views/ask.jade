@@ -8,16 +8,15 @@ block content
     li
      a(href="/") Home
     li
-     a(href="ask") ASK A QUESTION
+     a(href="ask") Ask a question
     li
-     a(href="questions") ALL QUESTIONS
+     a(href="questions") All questions
  
- div#logo.img-rounded.img-responsiv
  #content
   div.row
    div#leftSide.col-md-7
      each m in messages
-      div#message
+      div#message.slideInDown
        h1.messageid #{m.name} Asks :
        p.messageid #{m.message}
        p.voteup.glyphicon.glyphicon-chevron-up voteUp
